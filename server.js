@@ -13,15 +13,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let answers = ["demo1"];
 
 app.post("/saveAnswer", (req, res) => {
-  const { question, answer } = req.body;
-  answers.push({ question, answer });
+  const answer  = req.body;
+  answers.push(answer );
   res.send("Answer saved successfully.");
   console.log("answer inserted \n" + answers);
 });
 
 app.get("/getAnswers", (req, res) => {
   res.json(answers);
-  console.log(answers);
+  console.log("getAnswers " + answers);
 });
 app.get("/", (req, res) => {
   res.json("Hello world");
