@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
-const port = 3000; // Change the port number as needed
+const port = 80; 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
