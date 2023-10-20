@@ -13,8 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let answers = ["demo1"];
 
 app.post("/saveAnswer", (req, res) => {
-  const answer  = req.body;
-  answers.push(answer );
+  const {answer}  = req.body;
+  console.log(answer)
+  answers.push(answer);
   res.send("Answer saved successfully.");
   console.log("answer inserted \n" + answers);
 });
