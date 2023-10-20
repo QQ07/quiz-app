@@ -16,7 +16,7 @@ app.post("/saveAnswer", (req, res) => {
   const {answer}  = req.body;
   console.log(answer)
   answers.push(answer);
-  res.send("Answer saved successfully.");
+  res.json("Answer saved successfully.");
   console.log("answer inserted \n" + answers);
 });
 
