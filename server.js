@@ -1,23 +1,37 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
+// const bodyParser = require("body-parser");
+require("dotenv").config();
+const mongoose = require("mongoose");
 const cors = require("cors");
 
+const DBpass = process.env.DBString;
+const dataSchema = new mongoose.Schema({
+  answer: String,
+});
 const app = express();
 app.use(cors());
-const port = 80; 
+const port = 80;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
+const data = mongoose.model("data", dataSchema);
+mongoose.connect(
+  `mongodb+srv://vaidya_jiii:${DBpass}@cluster0.ckqj4dt.mongodb.net/quizAnswers`
+);
 let answers = ["demo1"];
 
 app.post("/saveAnswer", (req, res) => {
-  const {answer}  = req.body;
-  console.log(answer)
-  answers.push(answer);
-  res.json("Answer saved successfully.");
-  console.log("answer inserted \n" + answers);
+  const { ans } = req.body;
+  console.log("new answer " + ans);
+  const newData = new data({ answer: ans });
+  newData.save().then(()=>{
+
+    // answers.push(answer);
+    res.json("Answer saved successfully.");
+    console.log("answer inserted \n" + answers);
+  });
+
 });
 
 app.get("/getAnswers", (req, res) => {
