@@ -19,7 +19,9 @@ const data = mongoose.model("data", dataSchema);
 mongoose.connect(
   `mongodb+srv://vaidya_jiii:${DBpass}@cluster0.ckqj4dt.mongodb.net/quizAnswers`
 );
-
+console.log(
+  `mongodb+srv://vaidya_jiii:${DBpass}@cluster0.ckqj4dt.mongodb.net/quizAnswers`
+);
 // mongodb+srv://vaidya_jiii:<password>@cluster0.ckqj4dt.mongodb.net/quizAnswers
 let answers = ["demo1"];
 
@@ -27,13 +29,11 @@ app.post("/saveAnswer", (req, res) => {
   const { ans } = req.body;
   console.log("new answer " + ans);
   const newData = new data({ answer: ans });
-  newData.save().then(()=>{
-
+  newData.save().then(() => {
     // answers.push(answer);
     res.json("Answer saved successfully.");
     console.log("answer inserted \n" + answers);
   });
-
 });
 
 app.get("/getAnswers", (req, res) => {
