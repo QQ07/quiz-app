@@ -6,7 +6,8 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-const DBpass = process.env.DBString;
+var DBpass = process.env.DBString;
+DBpass = DBpass.trim();
 const dataSchema = new mongoose.Schema({
   answer: String,
 });
@@ -17,10 +18,14 @@ app.use(express.json());
 
 const data = mongoose.model("data", dataSchema);
 mongoose.connect(
-  `mongodb+srv://vaidya_jiii:${DBpass}@cluster0.ckqj4dt.mongodb.net/quizAnswers`
+  "mongodb+srv://vaidya_jiii:" +
+    DBpass +
+    "@cluster0.ckqj4dt.mongodb.net/quizAnswers"
 );
 console.log(
-  `mongodb+srv://vaidya_jiii:${DBpass}@cluster0.ckqj4dt.mongodb.net/quizAnswers`
+  // "mongodb+srv://vaidya_jiii:\n",
+  DBpass
+  // "@cluster0.ckqj4dt.mongodb.net/quizAnswers"
 );
 // mongodb+srv://vaidya_jiii:<password>@cluster0.ckqj4dt.mongodb.net/quizAnswers
 let answers = ["demo1"];
