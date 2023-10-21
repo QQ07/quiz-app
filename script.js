@@ -19,9 +19,19 @@ function saveAnswer() {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
+       displayPopup();
     })
     .catch((error) => {
       console.error("Error:", error);
-      // Handle error in a way suitable for your application
     });
+}
+
+function displayPopup() {
+  var popup = document.getElementById("popup");
+  popup.classList.add("show");
+  var hide= document.getElementById("audience-screen");
+  hide.classList.add("hide");
+  // setTimeout(function () {
+  //   popup.classList.remove("show");
+  // }, 2000); // Adjust the time here (in milliseconds) for how long you want the popup to be displayed
 }
