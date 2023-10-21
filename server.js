@@ -19,6 +19,8 @@ const data = mongoose.model("data", dataSchema);
 mongoose.connect(
   `mongodb+srv://vaidya_jiii:${DBpass}@cluster0.ckqj4dt.mongodb.net/quizAnswers`
 );
+
+// mongodb+srv://vaidya_jiii:<password>@cluster0.ckqj4dt.mongodb.net/quizAnswers
 let answers = ["demo1"];
 
 app.post("/saveAnswer", (req, res) => {
