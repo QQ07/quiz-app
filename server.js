@@ -6,8 +6,9 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-var DBpass = process.env.DBString;
-DBpass = DBpass.trim();
+// var DBpass = process.env.DBString;
+const DBpass = process.env.DBpass;
+// DBpass = DBpass.trim();
 const dataSchema = new mongoose.Schema({
   answer: String,
 });
