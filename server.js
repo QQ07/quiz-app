@@ -3,13 +3,13 @@ const express = require("express");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const app = express();
+app.use(cors());
 
 const DBpass = process.env.DBString;
 const dataSchema = new mongoose.Schema({
   answer: String,
 });
-const app = express();
-app.use(cors());
 const port = 80;
 
 app.use(express.json());
