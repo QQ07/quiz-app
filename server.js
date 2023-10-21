@@ -23,7 +23,7 @@ mongoose.connect(
     "@cluster0.ckqj4dt.mongodb.net/quizAnswers"
 );
 console.log(
-  // "mongodb+srv://vaidya_jiii:\n",
+  "mongodb+srv://vaidya_jiii:\n",
   DBpass
   // "@cluster0.ckqj4dt.mongodb.net/quizAnswers"
 );
